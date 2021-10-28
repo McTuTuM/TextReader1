@@ -15,7 +15,7 @@ class Window(Ui_MainWindow,QtWidgets.QMainWindow):
         self.pushButton_3.clicked.connect(lambda:self.main())
 
     def text_recognition(self, file_path,text_file_name):
-        reader = easyocr.Reader(["ru"])
+        reader = easyocr.Reader(["ru", "en"])
         result = reader.readtext(file_path, detail= 0, paragraph= True)
         with open(text_file_name, "w") as file:
             for line in result:
@@ -42,7 +42,6 @@ class Window(Ui_MainWindow,QtWidgets.QMainWindow):
         try:
             f = open(fname, 'w')
             with f:
-                # data = f.read()
                 self.lineEdit_2.setText(fname)
                 f.close()
         except:
