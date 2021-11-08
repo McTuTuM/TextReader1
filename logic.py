@@ -8,7 +8,6 @@ class Window(Ui_MainWindow,QtWidgets.QMainWindow):
         self.setupUi(self)
         self.addFunctions()
 
-
     def addFunctions(self):
         self.pushButton.clicked.connect(lambda:self.showDialog())
         self.pushButton_2.clicked.connect(lambda:self.saveDialog())
@@ -19,7 +18,7 @@ class Window(Ui_MainWindow,QtWidgets.QMainWindow):
         result = reader.readtext(file_path, detail= 0, paragraph= True)
         with open(text_file_name, "w") as file:
             for line in result:
-                file.write(f"{line}\n\n\n\n")
+                file.write(f"{line}\n\n")
         return self.label_3.setText(f"Result wrote into {text_file_name}")
 
     def main(self):
@@ -32,7 +31,6 @@ class Window(Ui_MainWindow,QtWidgets.QMainWindow):
         try:
             f = open(fname, 'r')
             with f:
-                # data = f.read()
                 self.lineEdit.setText(fname)
                 f.close()
         except:
